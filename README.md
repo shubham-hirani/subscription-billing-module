@@ -62,7 +62,15 @@ celery -A subscription_billing_module worker --loglevel=info
 celery -A subscription_billing_module beat --loglevel=info
 ```
 
-#cURL examples
+# Create plans
+---
+- Log in with your superuser credentials in django admin portal
+- Navigate to the Plans section
+- Add new plans by clicking Add Plan
+
+---
+
+# cURL examples
 
 Signup example cURL
 ```bash
