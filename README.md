@@ -60,3 +60,64 @@ celery -A subscription_billing_module worker --loglevel=info
 
 #To run periodic task with celery beat
 celery -A subscription_billing_module beat --loglevel=info
+```
+
+#cURL examples
+
+Signup example cURL
+```bash
+curl --location 'http://localhost:8000/api/auth/signup/' \
+--header 'Content-Type: application/json' \
+--data '{"username":"testuser", "password":"password123"}'
+```
+
+Login example cURL
+```bash
+curl --location 'http://localhost:8000/api/auth/login/' \
+--header 'Content-Type: application/json' \
+--data '{
+    "username": "testuser",
+    "password": "password123"
+}'
+```
+
+Subscribe plan example cURL
+```bash
+curl --location 'http://localhost:8000/api/subscribe/' \
+--header 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzQ3OTM4OTQ3LCJpYXQiOjE3NDc5Mzg2NDcsImp0aSI6ImE3MGMzZjdiYjM2MTRjMWU4ODc1OTk3YTc5ZjgxNDkwIiwidXNlcl9pZCI6Mn0.kpLJm4ylTF9Cph8ShQ9WPoCbHf31IWikSa6W3T_T8dg' \
+--header 'Content-Type: application/json' \
+--data '{
+    "plan_id": 1
+}'
+```
+
+unsubscribe example cURL
+```bash
+curl --location 'http://localhost:8000/api/unsubscribe/' \
+--header 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzQ3OTMyMTAzLCJpYXQiOjE3NDc5MzE4MDMsImp0aSI6IjRiMGEyZmNiY2YxZDRlZDBhMjBmMDZiYTBjODZkN2I1IiwidXNlcl9pZCI6Mn0.I7-s3GzdiLP9fVVZQPeLmbJTQP48JHzbFv_Gaf8P1pY' \
+--header 'Content-Type: application/json' \
+--data '{
+    "plan_id": 1
+}'
+```
+
+
+Invoice payment example cURL
+```bash
+curl --location 'http://localhost:8000/api/pay_invoice/' \
+--header 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzQ3OTM4OTQ3LCJpYXQiOjE3NDc5Mzg2NDcsImp0aSI6ImE3MGMzZjdiYjM2MTRjMWU4ODc1OTk3YTc5ZjgxNDkwIiwidXNlcl9pZCI6Mn0.kpLJm4ylTF9Cph8ShQ9WPoCbHf31IWikSa6W3T_T8dg' \
+--header 'Content-Type: application/json' \
+--data '{
+    "invoice_id": 1
+}'
+```
+
+Invoice list example cURL
+```bash
+curl --location --request GET 'http://localhost:8000/api/invoice_list/' \
+--header 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzQ3OTM4OTQ3LCJpYXQiOjE3NDc5Mzg2NDcsImp0aSI6ImE3MGMzZjdiYjM2MTRjMWU4ODc1OTk3YTc5ZjgxNDkwIiwidXNlcl9pZCI6Mn0.kpLJm4ylTF9Cph8ShQ9WPoCbHf31IWikSa6W3T_T8dg' \
+--header 'Content-Type: application/json' \
+--data '{
+    "invoice_id": 1
+}'
+```
